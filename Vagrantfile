@@ -19,4 +19,7 @@ Vagrant.configure("2") do |config|
     config.hostsupdater.aliases = ["development.local"]
     # if the plugin is installed correctly and file is update with vagrant destroy then vagrant up
     # we should be able to see nginx page in the browser with http://development.local 
+
+    # syncing folder from host to VM
+    config.vm.synced_folder "app/", "/home/ubuntu/"
 end
