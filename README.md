@@ -91,21 +91,39 @@ For help on any individual command run `vagrant COMMAND -h`
 
 https://github.com/agiledivider/vagrant-hostsupdater
 
+# App stuff
+- clone repo from shahrukh, with app and environment folders etc
+- move the provision file inside the environment folder
+- `config.vm.synced_folder 'environment/', '/home/vagrant/environment'` to merge local host folders with VM, these commands in Vagrantfile
+- `sudo apt-get install -y rake`, `rake spec` checks packages have been installed and are correct versions
+- nodejs and pm2 installs are detailed in provision.sh 
+- `env` shows environment variables in app folder
+- `printenv key` returns value
+- `export key=value` creates variable
+- these created variables are not persistent like this, will disappear when reloading the VM, see below for persistent variables
+- `sudo apt-get install python-software-properties`
+
+# Task
+## Research how to make environment variable persistent
+## Create a variable called DB_HOST with value mongodb
+- in VM `sudo vi /etc/environment`
+- press i to start editing
+- insert new variable - `DB_HOST=mongodb`
+- esc to exit editing mode
+- shift + ;, then x, then enter to finish
+- log out of VM and back in, `env` to check environment variables
 
 
+# Task
+## Automate provisioning of nodejs installation with required dependencies
+- following code added to provision.sh:
+```ruby
+# added lines to automate nodejs install automation
+# installs v6
 
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - 
+sudo apt-get install -y nodejs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# install pm2 packag manager
+npm install pm2 -g 
+```

@@ -25,5 +25,6 @@ Vagrant.configure("2") do |config|
     config.vm.synced_folder "environment/", "/home/vagrant/environment/"
 
     # executing provision.sh in VM
-    config.vm.provision "shell", path: "environment/provision.sh"
+    config.vm.provision "shell", path: "./environment/provision.sh"
+
 end
