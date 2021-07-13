@@ -3,10 +3,10 @@
 Vagrant.configure("2") do |config|
   
   # Do not use code from line 5 to 7
-  config.vm.provider "virtualbox" do |v|
-    v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-  end
+  # config.vm.provider "virtualbox" do |v|
+  #   v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+  #   v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+  # end
 
   config.vm.box = "ubuntu/xenial64"
   # using ubuntu 16.04 LTS box
