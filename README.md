@@ -106,12 +106,9 @@ https://github.com/agiledivider/vagrant-hostsupdater
 # Task
 ## Research how to make environment variable persistent
 ## Create a variable called DB_HOST with value mongodb
-- in VM `sudo vi /etc/environment`
-- press i to start editing
-- insert new variable - `DB_HOST=mongodb`
-- esc to exit editing mode
-- shift + ;, then x, then enter to finish
-- log out of VM and back in, `env` to check environment variables
+- in VM `nano .profile`
+- add `export DB_HOST=mongodb` at end of file
+- run `source .profile` to work with changes now, or log out and back in
 
 
 # Task
@@ -126,4 +123,6 @@ sudo apt-get install -y nodejs
 
 # install pm2 packag manager
 npm install pm2 -g 
+
+sudo apt-get install python-software-properties -y
 ```
