@@ -21,6 +21,6 @@ Vagrant.configure("2") do |config|
     # we should be able to see nginx page in the browser with http://development.local 
 
     # syncing folder from host to VM
-    config.vm.synced_folder "app/", "/home/ubuntu/"
-    config.vm.synced_folder "environment/", "/home/ubuntu/"
+    config.vm.synced_folder "app/", "/home/ubuntu/app/"
+    config.vm.synced_folder "environment/", "/home/ubuntu/environment/"
 end
