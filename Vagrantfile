@@ -22,4 +22,5 @@ Vagrant.configure("2") do |config|
 
     # syncing folder from host to VM
     config.vm.synced_folder "app/", "/home/ubuntu/"
+    config.vm.synced_folder "environment/", "/home/ubuntu/"
 end
