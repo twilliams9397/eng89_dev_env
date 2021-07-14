@@ -1,5 +1,12 @@
-# ruby syntax
+# Multi Machines
+- Use one vagrant file to launch 2 VMs
+- One VM for app (already done) one called db (with mongodb installed)
+- Connect app VM to db VM with variable in app environment
+- look at https://www.vagrantup.com/docs/multi-machine
+![MicrosoftTeams-image.png] (MicrosoftTeams-image.png)
 
+- Vagrantfile updated for multi-machine:
+```ruby
 Vagrant.configure("2") do |config|
 
  config.vm.define "app" do |app|
@@ -35,3 +42,6 @@ Vagrant.configure("2") do |config|
   end
 
 end
+
+```
+- VMs run using same vagrant commands, but specific to machine - `vagrant up db` etc
