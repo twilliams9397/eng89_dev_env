@@ -2,15 +2,15 @@
 
 # def set_env vars
 #   command = <<~HEREDOC
-#   echo "Setting Environment Variables"
-#   source ~/.bashrc
+#     echo "Setting Environment Variables"
+#     source ~/.bashrc
 #   HEREDOC
 
 #   vars.each do |key, value|
 #     command += <<~HEREDOC
-#     if [ -z "$#{key}" ]; then
-#     echo "export #{key}=#{value}" >> ~/.bashrc
-#     fi
+#       if [ -z "$#{key}" ]; then
+#         echo "export #{key}=#{value}" >> ~/.bashrc
+#       fi
 #     HEREDOC
 #   end
 
@@ -21,7 +21,7 @@
 
 Vagrant.configure("2") do |config|
 
- config.vm.define "app" do |app|
+ config.vm.define "app" do |app| # configures first VM - app
 
   app.vm.box = "ubuntu/xenial64"
   # using ubuntu 16.04 LTS box
@@ -45,13 +45,13 @@ Vagrant.configure("2") do |config|
 
   end
 
-  config.vm.define "db" do |db|
+  config.vm.define "db" do |db| # configures second VM - db
 
-    db.vm.box = "ubuntu/xenial64"
-    db.vm.network "private_network", ip: "192.168.10.150"
+    db.vm.box = "ubuntu/xenial64" # same ubuntu box
+    db.vm.network "private_network", ip: "192.168.10.150" # new private up
     db.hostsupdater.aliases = ["database.local"] 
-    db.vm.synced_folder "db_environment", "/home/vagrant/db_environment"
-    db.vm.provision "shell", path: "./db_environment/provision.sh"
+    db.vm.synced_folder "db_environment", "/home/vagrant/db_environment" # different folder synced
+    db.vm.provision "shell", path: "./db_environment/provision.sh" # different provisioning for setup
 
   end
 

@@ -17,7 +17,8 @@ npm install pm2 -g
 sudo apt-get install python-software-properties -y
 
 cd /etc
-sudo rm -rf mongod.conf
+sudo rm -rf mongod.conf # deletes config file for mongdb
+# rewrites config file with 0.0.0.0 ip for ease of access
 sudo echo "
 storage:
   dbPath: /var/lib/mongodb
@@ -31,8 +32,7 @@ net:
   port: 27017
   bindIp: 0.0.0.0
 " >> mongod.conf
+
+# restarts and enables with new config
 sudo systemctl restart mongod
 sudo systemctl enable mongod
-
-# cd /home/vagrant/task/app
-# node seeds/seed.js
