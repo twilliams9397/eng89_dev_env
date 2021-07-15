@@ -90,6 +90,7 @@ npm install pm2 -g
 sudo apt-get install python-software-properties -y # installs any missing python properties
 
 sudo echo "export DB_HOST:mongodb://192.168.10.150:27017/posts" >> ~/.bashrc # sets environment variable to bashrc file
+source ~/.bashrc
 
 sudo rm -rf /etc/nginx/sites-available/default # reverse proxy setup so port 3000 isnt needed
 sudo echo "server{
