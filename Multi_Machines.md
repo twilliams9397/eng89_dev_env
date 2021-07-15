@@ -7,6 +7,8 @@
 
 - Vagrantfile updated for multi-machine:
 ```ruby
+# ruby syntax
+
 Vagrant.configure("2") do |config|
 
  config.vm.define "app" do |app|
@@ -29,19 +31,41 @@ Vagrant.configure("2") do |config|
 
     # executing provision.sh in VM
     app.vm.provision "shell", path: "./environment/provision.sh"
+
   end
 
   config.vm.define "db" do |db|
 
     db.vm.box = "ubuntu/xenial64"
-
+    db.vm.network "private_network", ip: "192.168.10.150"
+    db.hostsupdater.aliases = ["database.local"] 
     db.vm.synced_folder "db_environment", "/home/vagrant/db_environment"
-
     db.vm.provision "shell", path: "./db_environment/provision.sh"
 
   end
 
 end
 
+
 ```
 - VMs run using same vagrant commands, but specific to machine - `vagrant up db` etc
+- new provision.sh created for db VM to install MongoDB
+
+
+### Steps to launch db and app and link app to database
+- vagrant up db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

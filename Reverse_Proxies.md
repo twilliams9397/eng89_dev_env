@@ -8,3 +8,18 @@
 - after creating/editing the file `sudo nginx -t` will test if the file is correctly formatted and runs
 - `sudo systemctl restart nginx` and `sudo systemctl status nginx` will restart nginx with the new default file and checks the status
 - `npm start` will now start the app (from the app folder) with this new configuration
+
+```ruby
+server{
+	listen 80;
+	server_name _;
+	location / {
+		proxy_pass http://192.168.10.100:3000;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade \$http_upgrade;
+		proxy_set_header Connection 'upgrade';
+		proxy_set_header Host \$host;
+		proxy_cachhe_bypass \$http_upgrade;
+				}
+}
+```
