@@ -1,23 +1,23 @@
 # ruby syntax
 
-def set_env vars
-  command = <<~HEREDOC
-  echo "Setting Environment Variables"
-  source ~/.bashrc
-  HEREDOC
+# def set_env vars
+#   command = <<~HEREDOC
+#   echo "Setting Environment Variables"
+#   source ~/.bashrc
+#   HEREDOC
 
-  vars.each do |key, value|
-    command += <<~HEREDOC
-    if [ -z "$#{key}" ]; then
-    echo "export #{key}=#{value}" >> ~/.bashrc
-    fi
-    HEREDOC
-  end
+#   vars.each do |key, value|
+#     command += <<~HEREDOC
+#     if [ -z "$#{key}" ]; then
+#     echo "export #{key}=#{value}" >> ~/.bashrc
+#     fi
+#     HEREDOC
+#   end
 
 
 
-  return command
-end
+#   return command
+# end
 
 Vagrant.configure("2") do |config|
 
@@ -40,9 +40,8 @@ Vagrant.configure("2") do |config|
     app.vm.synced_folder "environment/", "/home/vagrant/environment/"
 
     # executing provision.sh in VM
-    app.vm.provision "shell", path: "./environment/provision.sh"
+    app.vm.provision "shell", path: "./environment/provision.sh", env: {'DB_HOST' => 'mongodb://192.168.10.150:27017/posts'}
     # setting environment variable
-    app.vm.provision "shell", inline: set_env({ DB_HOST: "mongodb://192.168.10.150:27017/posts" })
 
   end
 

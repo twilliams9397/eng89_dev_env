@@ -106,9 +106,9 @@ https://github.com/agiledivider/vagrant-hostsupdater
 # Task
 ## Research how to make environment variable persistent
 ## Create a variable called DB_HOST with value mongodb
-- in host home location `sudo nano ~/.zshrc`
+- in host home location `sudo nano ~/.bashrc`
 - add `export DB_HOST=mongodb` at end of file
-- run `source b~/.zshrc` to work with changes now, or log out and back in
+- run `source ~/.bashrc` to work with changes now, or log out and back in
 
 
 # Task

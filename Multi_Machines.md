@@ -53,7 +53,11 @@ end
 
 
 ### Steps to launch db and app and link app to database
-- vagrant up db
+- ensure each provision.sh has correct installs and any necessary restarts after updating of conf files
+- ensure Vagrantfile is setting any required environment variables
+- `vagrant up db`
+- `vagrant up app && vagrant ssh app`
+- `npm start`
 
 
 
